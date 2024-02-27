@@ -196,7 +196,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     function checkLinks(websiteLink, designLink) {
       function checkLink(link) {
-        var proxyUrl = 'http://localhost:3000/proxy?url=' + link;
+        var proxyUrl = 'proxy.php?url=' + encodeURIComponent(link);
         var xhr = new XMLHttpRequest();
         xhr.open("GET", proxyUrl, true);
         xhr.onreadystatechange = function () {
@@ -211,6 +211,7 @@ document.addEventListener("DOMContentLoaded", function () {
         };
         xhr.send();
       }
+      
     
       if (websiteLink && websiteLink !== "#") {
         checkLink(websiteLink);
