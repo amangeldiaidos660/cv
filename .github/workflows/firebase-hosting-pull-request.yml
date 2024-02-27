@@ -2,19 +2,26 @@
 # https://github.com/firebase/firebase-tools
 
 name: Deploy to Firebase Hosting on PR
-'on': pull_request
+
+on:
+  pull_request:
+    branches:
+      - main
+
 permissions:
   checks: write
   contents: read
   pull-requests: write
+
 jobs:
   build_and_preview:
     if: '${{ github.event.pull_request.head.repo.full_name == github.repository }}'
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./cv 
     steps:
       - uses: actions/checkout@v4
-      - name: Change to project directory
-        run: cd $GITHUB_WORKSPACE
       - run: npm ci && npm run build
       - uses: FirebaseExtended/action-hosting-deploy@v0
         with:
