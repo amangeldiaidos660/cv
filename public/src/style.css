@@ -410,7 +410,7 @@ section .container {
 .about-me .content h3 {
   font-weight: 700;
   font-size: 26px;
-  color: var(--color);;
+  color: var(--color);
 }
 
 .about-me .content p:last-child {
@@ -784,5 +784,9 @@ svg{
   margin-bottom: 20px; 
 }
 
-
+.page-404-center p{
+  font-weight: 700;
+  font-size: 16px;
+  color: var(--color);
+}
 

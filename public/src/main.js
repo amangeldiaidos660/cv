@@ -202,8 +202,14 @@ document.addEventListener("DOMContentLoaded", function () {
           if (xhr.readyState == 4) {
             if (xhr.status == 200) {
               window.location.href = link;
+              // if (designLink && designLink !== "#") {
+              //   var confirmResult = confirm("Ты можешь и на дизайна посмотреть !");
+              //   if (confirmResult) {
+              //     window.open(designLink, "_blank");
+              //   }
+              // }
             } else {
-              alert(`Ссылка ${link} недоступна.`);
+              // alert(`Ссылка ${link} недоступна.`);
               window.location.href = "404.html";
             }
           }
@@ -214,11 +220,11 @@ document.addEventListener("DOMContentLoaded", function () {
       if (websiteLink && websiteLink !== "#") {
         checkLink(websiteLink);
       } else if (designLink && designLink !== "#") {
-        if (confirm(`Ссылка ${websiteLink} недоступна. Перейти на ${designLink}?`)) {
+        if (confirm(`Данный сайт не поддерживается компанией клиента. Перейти на дизайн?`)) {//confirm(`Ссылка ${websiteLink} недоступна. Перейти на ${designLink}?`))
           checkLink(designLink);
         }
       } else {
-        alert("Обе ссылки недоступны.");
+        // alert("Обе ссылки недоступны.");
         window.location.href = "404.html";
       }
     }
