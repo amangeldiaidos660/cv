@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "testrun",
-    "build": "echo 'No build step needed for a simple website'"
+    "build": "firebase deploy"
   },
   "repository": {
     "type": "git",
