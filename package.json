@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "testrun"
+    "test": "testrun",
+    "build": "echo 'No build step needed for a simple website'"
   },
   "repository": {
     "type": "git",
