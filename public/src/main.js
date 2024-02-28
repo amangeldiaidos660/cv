@@ -130,120 +130,6 @@ document.getElementById('downloadButton').addEventListener('click', function() {
 });
 
 
-document.addEventListener("DOMContentLoaded", function () {
-  fetch("portfolio.json")
-    .then(response => response.json())
-    .then(data => {
-      const portfolioContainer = document.getElementById("portfolio-container");
-
-      data.forEach(item => {
-        const portfolioItem = document.createElement("div");
-        portfolioItem.className = `col-lg-4 col-md-6 portfolio-item ${item.category.map(cat => `filter-${cat}`).join(' ')}`;
-        portfolioItem.id = `portfolio-item-${item.id}`;
-
-        const portfolioWrap = document.createElement("div");
-        portfolioWrap.className = "portfolio-wrap";
-
-        const portfolioLink = document.createElement("a");
-        portfolioLink.href = "#"; // Default to a placeholder link
-        portfolioLink.setAttribute("data-gallery", "portfolioGallery");
-        portfolioLink.className = "portfolio-lightbox";
-        portfolioLink.target = "_blank";
-
-        const workImg = document.createElement("div");
-        workImg.className = "work-img";
-
-        const imgElement = document.createElement("img");
-        imgElement.src = item.imageSrc;
-        imgElement.alt = "portfolio-work";
-        imgElement.className = "img-fluid";
-
-        workImg.appendChild(imgElement);
-        portfolioLink.appendChild(workImg);
-        portfolioWrap.appendChild(portfolioLink);
-        portfolioItem.appendChild(portfolioWrap);
-        portfolioContainer.appendChild(portfolioItem);
-
-        // Добавим обработчик клика на ссылку
-        portfolioLink.addEventListener("click", function (event) {
-          event.preventDefault(); // Отменяем стандартное поведение перехода по ссылке
-          checkLinks(item.websiteLink, item.designLink);
-        });
-      });
-
-      const portfolioFilters = document.getElementById("portfolio-flters").getElementsByTagName("li");
-      for (const filter of portfolioFilters) {
-        filter.addEventListener("click", function () {
-          for (const f of portfolioFilters) {
-            f.classList.remove("filter-active");
-          }
-          this.classList.add("filter-active");
-
-          const selectedFilter = this.getAttribute("data-filter");
-          const portfolioItems = portfolioContainer.getElementsByClassName("portfolio-item");
-          for (const item of portfolioItems) {
-            item.style.display = "none";
-          }
-          const filteredItems = portfolioContainer.querySelectorAll(selectedFilter);
-          for (const item of filteredItems) {
-            item.style.display = "block";
-          }
-        });
-      }
-    })
-    .catch(error => console.error("Error fetching portfolio data:", error));
-
-
-    function checkLinks(websiteLink, designLink) {
-      function checkLink(link) {
-        var xhr = new XMLHttpRequest();
-        xhr.open("GET", link, true);
-        xhr.onreadystatechange = function () {
-          if (xhr.readyState == 4) {
-            if (xhr.status == 200) {
-              window.location.href = link;
-              // if (designLink && designLink !== "#") {
-              //   var confirmResult = confirm("Ты можешь и на дизайна посмотреть !");
-              //   if (confirmResult) {
-              //     window.open(designLink, "_blank");
-              //   }
-              // }
-            } else {
-              // alert(`Ссылка ${link} недоступна.`);
-              window.location.href = "404.html";
-            }
-          }
-        };
-        xhr.send();
-      }
-    
-      if (websiteLink && websiteLink !== "#") {
-        checkLink(websiteLink);
-      } else if (designLink && designLink !== "#") {
-        if (confirm(`Данный сайт не поддерживается компанией клиента. Перейти на дизайн?`)) {//confirm(`Ссылка ${websiteLink} недоступна. Перейти на ${designLink}?`))
-          checkLink(designLink);
-        }
-      } else {
-        // alert("Обе ссылки недоступны.");
-        window.location.href = "404.html";
-      }
-    }
-    
-    
-    
-});
-
-
-
-
-
-
-
-
-
-
-
-
 // document.addEventListener("DOMContentLoaded", function () {
 //   fetch("portfolio.json")
 //     .then(response => response.json())
@@ -259,8 +145,7 @@ document.addEventListener("DOMContentLoaded", function () {
 //         portfolioWrap.className = "portfolio-wrap";
 
 //         const portfolioLink = document.createElement("a");
-//         portfolioLink.href = item.websiteLink || item.designLink || "#";
-//         // portfolioLink.href = item.imageSrc;
+//         portfolioLink.href = "javascript:void(0)";
 //         portfolioLink.setAttribute("data-gallery", "portfolioGallery");
 //         portfolioLink.className = "portfolio-lightbox";
 //         portfolioLink.target = "_blank";
@@ -278,6 +163,12 @@ document.addEventListener("DOMContentLoaded", function () {
 //         portfolioWrap.appendChild(portfolioLink);
 //         portfolioItem.appendChild(portfolioWrap);
 //         portfolioContainer.appendChild(portfolioItem);
+
+
+//         portfolioLink.addEventListener("click", function (event) {
+//           event.preventDefault(); 
+//           checkLinks(item.websiteLink, item.designLink);
+//         });
 //       });
 
 //       const portfolioFilters = document.getElementById("portfolio-flters").getElementsByTagName("li");
@@ -301,7 +192,131 @@ document.addEventListener("DOMContentLoaded", function () {
 //       }
 //     })
 //     .catch(error => console.error("Error fetching portfolio data:", error));
+
+
+//     function checkLinks(websiteLink, designLink) {
+//       function checkLink(link) {
+//         fetch(link)
+//           .then(response => {
+//             if (response.ok) {
+//               window.location.href = link;
+//             } else {
+//               alert(`Ссылка ${link} недоступна.`);
+//               // window.location.href = "404.html";
+//             }
+//           })
+//           .catch(error => {
+//             console.error('Ошибка при проверке ссылки:', error);
+//             // window.location.href = "404.html";
+//           });
+//       }
+    
+//       if (websiteLink && websiteLink !== "#") {
+//         checkLink(websiteLink);
+//       } else if (designLink && designLink !== "#") {
+//         if (confirm(`Данный сайт не поддерживается компанией клиента.${websiteLink} Перейти на дизайн?`)) {
+//           checkLink(designLink);
+//         }
+//       } else {
+//         alert(`Ссылка ${websiteLink} недоступна.`);
+//         // window.location.href = "404.html";
+//       }
+//     }
+    
+    
+    
+    
 // });
+
+
+
+
+
+
+
+document.addEventListener("DOMContentLoaded", function () {
+  fetch("portfolio.json")
+    .then(response => response.json())
+    .then(data => {
+      const portfolioContainer = document.getElementById("portfolio-container");
+
+      data.forEach(item => {
+        const portfolioItem = document.createElement("div");
+        portfolioItem.className = `col-lg-4 col-md-6 portfolio-item ${item.category.map(cat => `filter-${cat}`).join(' ')}`;
+        portfolioItem.id = `portfolio-item-${item.id}`;
+
+        const portfolioWrap = document.createElement("div");
+        portfolioWrap.className = "portfolio-wrap";
+
+        const portfolioLink = document.createElement("div");
+        portfolioLink.className = "portfolio-lightbox"; // Using a div instead of an anchor element
+
+        const workImg = document.createElement("div");
+        workImg.className = "work-img";
+
+        const imgElement = document.createElement("img");
+        imgElement.src = item.imageSrc;
+        imgElement.alt = "portfolio-work";
+        imgElement.className = "img-fluid";
+
+        workImg.appendChild(imgElement);
+        portfolioLink.appendChild(workImg);
+        portfolioWrap.appendChild(portfolioLink);
+        portfolioItem.appendChild(portfolioWrap);
+        portfolioContainer.appendChild(portfolioItem);
+
+        // Добавим обработчик события наведения мыши
+        portfolioItem.addEventListener("mouseenter", function () {
+          showLinks(portfolioLink, item.websiteLink, item.designLink);
+        });
+
+        // Добавим обработчик события ухода мыши
+        portfolioItem.addEventListener("mouseleave", function () {
+          hideLinks(portfolioLink);
+        });
+      });
+
+      function showLinks(portfolioLink, websiteLink, designLink) {
+        const linksContainer = document.createElement("div");
+        linksContainer.className = "links-container";
+
+        if (websiteLink && websiteLink !== "#") {
+          const websiteLinkElement = createLinkElement("Website", websiteLink);
+          linksContainer.appendChild(websiteLinkElement);
+        }
+
+        if (designLink && designLink !== "#") {
+          const designLinkElement = createLinkElement("Design", designLink);
+          linksContainer.appendChild(designLinkElement);
+        }
+
+        if (linksContainer.children.length > 0) {
+          portfolioLink.appendChild(linksContainer);
+        } else {
+          // Если нет доступных ссылок, перейти на страницу 404
+          window.location.href = "404.html";
+        }
+      }
+
+      function hideLinks(portfolioLink) {
+        const linksContainer = portfolioLink.querySelector(".links-container");
+        if (linksContainer) {
+          portfolioLink.removeChild(linksContainer);
+        }
+      }
+
+      function createLinkElement(label, link) {
+        const linkElement = document.createElement("a");
+        linkElement.href = link;
+        linkElement.textContent = label;
+        linkElement.target = "_blank";
+        linkElement.className = "portfolio-link";
+
+        return linkElement;
+      }
+    })
+    .catch(error => console.error("Error fetching portfolio data:", error));
+});
 
 
 
