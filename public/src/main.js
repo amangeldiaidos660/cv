@@ -196,9 +196,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
     function checkLinks(websiteLink, designLink) {
       function checkLink(link) {
-        var proxyUrl = 'proxy.php?url=' + encodeURIComponent(link);
         var xhr = new XMLHttpRequest();
-        xhr.open("GET", proxyUrl, true);
+        xhr.open("GET", link, true);
         xhr.onreadystatechange = function () {
           if (xhr.readyState == 4) {
             if (xhr.status == 200) {
@@ -211,7 +210,6 @@ document.addEventListener("DOMContentLoaded", function () {
         };
         xhr.send();
       }
-      
     
       if (websiteLink && websiteLink !== "#") {
         checkLink(websiteLink);
@@ -224,6 +222,7 @@ document.addEventListener("DOMContentLoaded", function () {
         window.location.href = "404.html";
       }
     }
+    
     
     
 });
