@@ -16,7 +16,10 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: 14
-      
+
+      - name: Install Firebase CLI
+        run: npm install -g firebase-tools
+
       - name: Change to project root directory
         run: cd ${{ github.workspace }}
       
