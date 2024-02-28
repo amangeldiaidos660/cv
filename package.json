@@ -4,9 +4,12 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "npm run build"
+    "test": "testrun"
   },
-  "author": "",
+  "repository": {
+    "type": "git",
+    "url": "cv"
+  },
+  "author": "Aidos",
   "license": "ISC"
 }
