@@ -249,8 +249,7 @@ document.addEventListener("DOMContentLoaded", function () {
         portfolioWrap.className = "portfolio-wrap";
 
         const portfolioLink = document.createElement("div");
-        portfolioLink.className = "portfolio-lightbox"; // Using a div instead of an anchor element
-
+        portfolioLink.className = "portfolio-lightbox"; 
         const workImg = document.createElement("div");
         workImg.className = "work-img";
 
@@ -265,23 +264,42 @@ document.addEventListener("DOMContentLoaded", function () {
         portfolioItem.appendChild(portfolioWrap);
         portfolioContainer.appendChild(portfolioItem);
 
-        // Добавим обработчик события наведения мыши
         portfolioItem.addEventListener("mouseenter", function () {
           showLinks(portfolioLink, item.websiteLink, item.designLink);
         });
 
-        // Добавим обработчик события ухода мыши
         portfolioItem.addEventListener("mouseleave", function () {
           hideLinks(portfolioLink);
         });
       });
+
+      const portfolioFilters = document.getElementById("portfolio-flters").getElementsByTagName("li");
+      for (const filter of portfolioFilters) {
+        filter.addEventListener("click", function () {
+          for (const f of portfolioFilters) {
+            f.classList.remove("filter-active");
+          }
+          this.classList.add("filter-active");
+
+          const selectedFilter = this.getAttribute("data-filter");
+          const portfolioItems = portfolioContainer.getElementsByClassName("portfolio-item");
+          for (const item of portfolioItems) {
+            item.style.display = "none";
+          }
+          const filteredItems = portfolioContainer.querySelectorAll(selectedFilter);
+          for (const item of filteredItems) {
+            item.style.display = "block";
+          }
+        });
+      }
+    
 
       function showLinks(portfolioLink, websiteLink, designLink) {
         const linksContainer = document.createElement("div");
         linksContainer.className = "links-container";
 
         if (websiteLink && websiteLink !== "#") {
-          const websiteLinkElement = createLinkElement("Website", websiteLink);
+          const websiteLinkElement = createLinkElement("Website-demo", websiteLink);
           linksContainer.appendChild(websiteLinkElement);
         }
 
@@ -293,7 +311,6 @@ document.addEventListener("DOMContentLoaded", function () {
         if (linksContainer.children.length > 0) {
           portfolioLink.appendChild(linksContainer);
         } else {
-          // Если нет доступных ссылок, перейти на страницу 404
           window.location.href = "404.html";
         }
       }

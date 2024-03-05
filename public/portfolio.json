@@ -3,8 +3,9 @@
         "id": 1,
         "category": ["web"],
         "imageSrc": "src/img/portfolio/work-img-1.jpg",
-        "websiteLink": "https://nscomp.kz/",
-        "designLink": "#"
+        "websiteLink": "https://amangeldiaidos660.github.io/demo1/#ru", 
+        "designLink": "#",
+        "link": "https://nscomp.kz/"
     },
     {
         "id": 2,
@@ -17,15 +18,16 @@
         "id": 3,
         "category": ["web", "design"],
         "imageSrc": "src/img/portfolio/work-img-3.jpg",
-        "websiteLink": "https://iscomp.kz/",
-        "designLink": "#"
+        "websiteLink": "https://amangeldiaidos660.github.io/demo2/",
+        "designLink": "#",
+        "link": "https://iscomp.kz/"
     },
     {
         "id": 4,
         "category": ["design"],
         "imageSrc": "src/img/portfolio/work-img-4.jpg",
         "websiteLink": "#",
-        "designLink": "#"
+        "designLink": "https://www.behance.net/gallery/193121363/Side-design"
     },
     {
         "id": 5,
@@ -38,8 +40,9 @@
         "id": 6,
         "category": ["web"],
         "imageSrc": "src/img/portfolio/work-img-6.jpg",
-        "websiteLink": "https://www.bigsharkauto.kz/",
-        "designLink": "#"
+        "websiteLink": "https://amangeldiaidos660.github.io/demo3/",
+        "designLink": "#",
+        "link": "https://www.bigsharkauto.kz/"
     },
     {
         "id": 7,
